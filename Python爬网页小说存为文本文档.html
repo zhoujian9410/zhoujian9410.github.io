@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Floyd Zhou" />
+        <meta name="copyright" content="Floyd Zhou" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Python, 爬虫, 网页技术, Python, " />
+
+<meta property="og:title" content="Python爬网页小说存为文本文档 "/>
+<meta property="og:url" content="https://zhoujian9410.github.io/Python爬网页小说存为文本文档.html" />
+<meta property="og:description" content="虽然厚墨加上Github/Gitee上的书源已经能够覆盖绝大多数的网络小说，但是仍然有一些小说无法下载。因此萌生了用python将小说文本保存下来的念头。 requests-html库 requests-html是request库的作者开发的新库，一个所谓&#34;for humans&#34;的十分易用的Python库。 获取文本 找到文本的选择器：class选择器（用&#39;.&#39;标记）或者id选择器（用&#39;#&#39;标记）,并通过相关的requests-html库的find函数获得内容，具体代码如下： from requests_html import HTMLSession novel=HTMLSession().get(url) # url是小说文本所在网页链接 txt=novel.html.find(&#39;div#txt&#39;)[0].text 理论上这些文本存储下来，并不断追踪“下一章”的链接收集所有文本，即可完成下载，但实际上会遇到很多问题 …" />
+<meta property="og:site_name" content="Floyd Zhou&#39;s Blog" />
+<meta property="og:article:author" content="Floyd Zhou" />
+<meta property="og:article:published_time" content="2021-04-16T11:33:00+08:00" />
+<meta property="" content="2021-04-17T22:51:00+08:00" />
+<meta name="twitter:title" content="Python爬网页小说存为文本文档 ">
+<meta name="twitter:description" content="虽然厚墨加上Github/Gitee上的书源已经能够覆盖绝大多数的网络小说，但是仍然有一些小说无法下载。因此萌生了用python将小说文本保存下来的念头。 requests-html库 requests-html是request库的作者开发的新库，一个所谓&#34;for humans&#34;的十分易用的Python库。 获取文本 找到文本的选择器：class选择器（用&#39;.&#39;标记）或者id选择器（用&#39;#&#39;标记）,并通过相关的requests-html库的find函数获得内容，具体代码如下： from requests_html import HTMLSession novel=HTMLSession().get(url) # url是小说文本所在网页链接 txt=novel.html.find(&#39;div#txt&#39;)[0].text 理论上这些文本存储下来，并不断追踪“下一章”的链接收集所有文本，即可完成下载，但实际上会遇到很多问题 …">
+
+        <title>Python爬网页小说存为文本文档  · Floyd Zhou&#39;s Blog
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/custom.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
+    </head>
+    <body>
+        <div class="go-top">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </div>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="https://zhoujian9410.github.io/"><span class=site-name>Floyd Zhou's Blog</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="https://zhoujian9410.github.io">Home</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/pages/About.html">About</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/pages/Links.html">Links</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/categories.html">Categories</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/tags.html">Tags</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="https://zhoujian9410.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="https://zhoujian9410.github.io/Python爬网页小说存为文本文档.html"> Python爬网页小说存为文本文档  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>虽然厚墨加上Github/Gitee上的书源已经能够覆盖绝大多数的网络小说，但是仍然有一些小说无法下载。因此萌生了用python将小说文本保存下来的念头。</p>
+<h2>requests-html库</h2>
+<p><code>requests-html</code>是<code>request</code>库的作者开发的新库，一个所谓"for humans"的十分易用的Python库。</p>
+<h2>获取文本</h2>
+<p>找到文本的选择器：class选择器（用'.'标记）或者id选择器（用'#'标记）,并通过相关的<code>requests-html</code>库的<code>find</code>函数获得内容，具体代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+<span class="n">novel</span><span class="o">=</span><span class="n">HTMLSession</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># url是小说文本所在网页链接</span>
+<span class="n">txt</span><span class="o">=</span><span class="n">novel</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div#txt&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</code></pre></div>
+
+<p>理论上这些文本存储下来，并不断追踪“下一章”的链接收集所有文本，即可完成下载，但实际上会遇到很多问题，具体见下文：</p>
+<h3>问题1：乱码问题</h3>
+<p>上文用python获取的文本有一些字词无法显示，显示为utf-8编码，比如'\ue816'等等。通过Google搜索发现，'\ue816'属于Unicode编码的私人使用区(Private Use Areas)。
+一开始以为这个私有使用区的定义在Javascript脚本里面，找了很久，并没有找到。随后通过Chrome的F12审查元素，发现加载网页时加载了一个字体文件，并看到CSS样式里面引用了这个字体。
+下载这个字体，并用"High-Logic FontCreator"打开，发现这个字体确实在私人使用区定义了100个字符。因此，手动在Excel中输入了Unicode编码和对应的汉字，用于后面Python置换相应字符。</p>
+<h3>问题2：下一章链接问题</h3>
+<p>我所需要下载小说的链接有一个特征，每一章分成了n页，而下一页一般是相对链接，下一章采用的绝对链接。因而导致我一开始链接错误的问题，一直在第一章重复下载。
+解决方法很简单，下一页的链接为'?page=n'的形式，我只需要获取链接之后判断是否出现'page'这一字符串，即可判断是下一页还是下一页。并将链接分为两部分:url+pages，是下一页时刷新pages，是下一章时刷新url。</p>
+<h3>所有代码</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">xlrd</span>
+
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;xxx&#39;</span>
+<span class="c1"># url是小说第一章的链接</span>
+
+
+<span class="c1">#用于读取excel里面的私有字符并重新一一对应</span>
+<span class="k">def</span> <span class="nf">get_private_font</span><span class="p">(</span><span class="n">excel_path</span><span class="o">=</span><span class="s1">&#39;./Private_unicode.xlsx&#39;</span><span class="p">):</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="n">excel_path</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">tmp_a</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">tmp_b</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">tmp_c</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">tmp_d</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tmp_a</span><span class="p">)):</span>
+        <span class="n">tmp_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tmp_a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)))</span>
+           <span class="c1"># chr()函数返回一个数值对应的字符</span>
+        <span class="n">tmp_d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp_b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tmp_c</span><span class="p">,</span><span class="n">tmp_d</span>
+
+<span class="c1">#获取网页text数据</span>
+<span class="k">def</span> <span class="nf">get_text</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">pages</span><span class="p">):</span>
+    <span class="n">url_link</span><span class="o">=</span><span class="n">url</span><span class="o">+</span><span class="n">pages</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;准备访问&#39;</span><span class="o">+</span><span class="n">url_link</span><span class="p">)</span>
+    <span class="n">novel</span><span class="o">=</span><span class="n">HTMLSession</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_link</span><span class="p">)</span>
+    <span class="n">next_link</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">novel</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a#pt_next&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">links</span><span class="p">)</span>
+    <span class="n">Chapter_name</span><span class="o">=</span><span class="n">novel</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h1#chaptername&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">txt</span><span class="o">=</span><span class="n">novel</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div#txt&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">replace_and_txt</span><span class="p">(</span><span class="n">Chapter_name</span><span class="p">,</span><span class="n">txt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">next_link</span><span class="o">==</span><span class="p">[]:</span>  
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">next_link</span><span class="o">=</span><span class="n">next_link</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">next_link</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">next_link</span>
+            <span class="n">pages</span><span class="o">=</span><span class="s1">&#39;?page=1&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pages</span><span class="o">=</span><span class="n">next_link</span>
+        <span class="n">get_text</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">pages</span><span class="p">)</span>
+
+
+<span class="c1">#转换字符并写入txt</span>
+<span class="k">def</span> <span class="nf">replace_and_txt</span><span class="p">(</span><span class="n">Chapter_name</span><span class="p">,</span><span class="n">txt</span><span class="p">):</span>
+    <span class="n">tmp_c</span><span class="p">,</span><span class="n">tmp_d</span><span class="o">=</span><span class="n">get_private_font</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tmp_c</span><span class="p">)):</span>
+        <span class="n">txt</span><span class="o">=</span><span class="n">txt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp_c</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">tmp_d</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./test.txt&#39;</span><span class="p">,</span><span class="s1">&#39;a+&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_obj</span><span class="p">:</span>
+        <span class="n">file_obj</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">Chapter_name</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">file_obj</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">txt</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">Chapter_name</span><span class="o">+</span><span class="s1">&#39;写入完成&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">get_text</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">pages</span><span class="o">=</span><span class="s1">&#39;?page=1&#39;</span><span class="p">)</span>
+</code></pre></div>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2021-04-16T11:33:00+08:00">Apr 16, 2021</time>
+
+<h4>Last Updated</h4>
+<time datetime="2021-04-17T22:51:00+08:00">Apr 17, 2021</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="https://zhoujian9410.github.io/categories.html#python-ref">Python</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://zhoujian9410.github.io/tags.html#pa-chong-ref">爬虫
+                    <span>2</span>
+</a></li>
+                <li><a href="https://zhoujian9410.github.io/tags.html#python-ref">Python
+                    <span>2</span>
+</a></li>
+                <li><a href="https://zhoujian9410.github.io/tags.html#wang-ye-ji-zhu-ref">网页技术
+                    <span>2</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="#" title="My You can add links in your config file Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-you can add links in your config file sidebar-social-links"></i></a>
+    <a href="#" title="My Another social link Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-another social link sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+
+<!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+
+    // gitalk的主要参数
+        clientID: '6c9743a7bec4623cda1b',
+        clientSecret: '888e5b2628ba41b79f49f6821fa5450f600de075',
+        repo: 'Bolg_comment',
+        owner: 'zhoujian9410',
+        admin: ['zhoujian9410'],
+        id:decodeURI(window.location.pathname),
+
+    });
+    gitalk.render('gitalk-container');
+</script> 
+<!-- Gitalk end -->
+
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+        
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="https://zhoujian9410.github.io/theme/js/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+        <script>
+            $(function() {
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > 1000)
+                        $('div.go-top').show();
+                    else
+                        $('div.go-top').hide();
+                });
+                $('div.go-top').click(function() {
+                    $('html, body').animate({scrollTop: 0}, 1000);
+                });
+            });
+
+        </script>
+
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+    
+
+</html>

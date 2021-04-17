@@ -21,13 +21,19 @@
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/pygments.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/tipuesearch/tipuesearch.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/elegant.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/custom.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
 
     </head>
     <body>
+        <div class="go-top">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </div>
         <div id="content-sans-footer">
         <div class="navbar navbar-static-top">
             <div class="navbar-inner">
@@ -41,6 +47,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li ><a href="https://zhoujian9410.github.io">Home</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/pages/About.html">About</a></li>
                             <li ><a href="https://zhoujian9410.github.io/pages/Links.html">Links</a></li>
                             <li  class="active"><a href="https://zhoujian9410.github.io/categories.html">Categories</a></li>
                             <li ><a href="https://zhoujian9410.github.io/tags.html">Tags</a></li>
@@ -68,12 +75,14 @@
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle list-of-categories" data-toggle="collapse" data-parent="#accordion2" href="#python-ref">
-                        Python<span>1</span>
+                        Python<span>2</span>
                     </a>
                 </div>
                 <div id="python-ref" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <ul class="list-articles-category">
+ 
+                            <li><time pubdate="pubdate" datetime="2021-04-16T11:33:00+08:00">Fri 16 April 2021</time><a href="https://zhoujian9410.github.io/Python爬网页小说存为文本文档.html">Python爬网页小说存为文本文档  </a></li>
  
                             <li><time pubdate="pubdate" datetime="2021-04-15T16:30:00+08:00">Thu 15 April 2021</time><a href="https://zhoujian9410.github.io/requests-html快速入门.html">requests-html快速入门  </a></li>
                         </ul>
@@ -104,6 +113,22 @@
                 return (query.length > 0);
             }
         </script>
+
+        <script>
+            $(function() {
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > 1000)
+                        $('div.go-top').show();
+                    else
+                        $('div.go-top').hide();
+                });
+                $('div.go-top').click(function() {
+                    $('html, body').animate({scrollTop: 0}, 1000);
+                });
+            });
+
+        </script>
+
 
 <script  language="javascript" type="text/javascript">
     function uncollapse() {

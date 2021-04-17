@@ -12,12 +12,18 @@
         <title>Floyd Zhou's Blog - Authors</title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/pygments.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/tipuesearch/tipuesearch.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/elegant.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/custom.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
     </head>
     <body>
+        <div class="go-top">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </div>
         <div id="content-sans-footer">
         <div class="navbar navbar-static-top">
             <div class="navbar-inner">
@@ -31,6 +37,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li ><a href="https://zhoujian9410.github.io">Home</a></li>
+                            <li ><a href="https://zhoujian9410.github.io/pages/About.html">About</a></li>
                             <li ><a href="https://zhoujian9410.github.io/pages/Links.html">Links</a></li>
                             <li ><a href="https://zhoujian9410.github.io/categories.html">Categories</a></li>
                             <li ><a href="https://zhoujian9410.github.io/tags.html">Tags</a></li>
@@ -47,7 +54,7 @@
                 <div class="span10">
     <h1>Authors on Floyd Zhou's Blog</h1>
     <ul>
-        <li><a href="https://zhoujian9410.github.io/author/floyd-zhou.html">Floyd Zhou</a> (1)</li>
+        <li><a href="https://zhoujian9410.github.io/author/floyd-zhou.html">Floyd Zhou</a> (2)</li>
     </ul>
                 </div>
                 <div class="span1"></div>
@@ -70,6 +77,22 @@
                 return (query.length > 0);
             }
         </script>
+
+        <script>
+            $(function() {
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > 1000)
+                        $('div.go-top').show();
+                    else
+                        $('div.go-top').hide();
+                });
+                $('div.go-top').click(function() {
+                    $('html, body').animate({scrollTop: 0}, 1000);
+                });
+            });
+
+        </script>
+
     </body>
     <!-- Theme: Elegant built for Pelican
     License : http://oncrashreboot.com/pelican-elegant -->
