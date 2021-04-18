@@ -32,6 +32,7 @@
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/elegant.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/custom.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/styles.css" media="screen">
     </head>
     <body>
         <div class="go-top">
@@ -81,14 +82,14 @@
 <p>Python上有一个非常著名的HTTP库——<a href="http://cn.python-requests.org/zh_CN/latest/">requests</a>，相比大家都听说过，用过的人都说好！现在requests库的作者又发布了一个新库，叫做<a href="https://html.python-requests.org/">requests-html</a>，看名字也能猜出来，这是一个解析HTML的库，而且用起来和requests一样爽，下面就来介绍一下它。</p>
 <h2>安装</h2>
 <p>安装requests-html非常简单，一行命令即可做到。需要注意一点就是，requests-html只支持Python 3.6及更新的版本，所以使用老版本的Python的同学需要更新一下Python版本了。看了下源代码，因为requests-html广泛使用了一个Python 3.6中的新特性——类型注解。</p>
-<div class="highlight"><pre><span></span><code>pip install requests-html
+<div class="codehilite"><pre><span></span><code>pip install requests-html
 </code></pre></div>
 
 <h2>基本使用</h2>
 <h3>获取网页</h3>
 <p>requests-html和其他解析HTML库最大的不同点在于HTML解析库一般都是专用的，所以我们需要用另一个HTTP库先把网页下载下来，然后传给那些HTML解析库。而requests-html自带了这个功能，所以在爬取网页等方面非常方便。</p>
 <p>下面的代码获取了糗事百科上面的文字段子页面，返回的对象r是<code>requests.Reponse</code>类型，更确切的说是继承自前者的<code>requests_html.HTMLResponse</code>类型。这里其实和requests库的使用方法差不多，获取到的响应对象其实其实也没啥用，这里的关键就在于<code>r.html</code>这个属性，它会返回<code>requests_html.HTML</code>这个类型，它是整个<code>requests_html</code>库中最核心的一个类，负责对HTML进行解析。我们学习requests_html这个库，其实也就是学习这个HTML类的使用方法。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">HTMLSession</span><span class="p">()</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.qiushibaike.com/text/&#39;</span><span class="p">)</span>
@@ -98,12 +99,12 @@
 
 <h3>获取链接</h3>
 <p><code>links</code>和<code>absolute_links</code>两个属性分别返回HTML对象所包含的所有链接和绝对链接（均不包含锚点）。</p>
-<div class="highlight"><pre><span></span><code> print(r.html.links)
+<div class="codehilite"><pre><span></span><code> print(r.html.links)
 print(r.html.absolute_links)
 </code></pre></div>
 
 <p>结果为下（因为结果太长，所以我随便取了一点，看个意思就行）：</p>
-<div class="highlight"><pre><span></span><code>{&#39;/article/104353012&#39;, &#39;/article/120616112&#39;, &#39;/users/32331196/&#39;}
+<div class="codehilite"><pre><span></span><code>{&#39;/article/104353012&#39;, &#39;/article/120616112&#39;, &#39;/users/32331196/&#39;}
 {&#39;https://www.qiushibaike.com/imgrank/&#39;, &#39;https://www.qiushibaike.com/article/120669516&#39;, &#39;https://www.qiushibaike.com/article/120682041&#39;}
 </code></pre></div>
 
@@ -117,7 +118,7 @@ print(r.html.absolute_links)
 <li>_encoding，编码格式。</li>
 </ul>
 <p>下面是几个简单例子：</p>
-<div class="highlight"><pre><span></span><code> print(r.html.find(&#39;div#menu&#39;, first=True).text)
+<div class="codehilite"><pre><span></span><code> print(r.html.find(&#39;div#menu&#39;, first=True).text)
 
 print(r.html.find(&#39;div#menu a&#39;))
 
@@ -125,7 +126,7 @@ print(list(map(lambda x: x.text, r.html.find(&#39;div.content span&#39;))))
 </code></pre></div>
 
 <p>结果如下，因为段子太多，所以随便选了两个：</p>
-<div class="highlight"><pre><span></span><code>热门 24小时 热图 文字 穿越 糗图 新鲜
+<div class="codehilite"><pre><span></span><code>热门 24小时 热图 文字 穿越 糗图 新鲜
 [&lt;Element &#39;a&#39; href=&#39;/&#39; rel=(&#39;nofollow&#39;,)&gt;, &lt;Element &#39;a&#39; href=&#39;/hot/&#39;&gt;, &lt;Element &#39;a&#39; href=&#39;/imgrank/&#39;&gt;, &lt;Element &#39;a&#39; id=&#39;highlight&#39; href=&#39;/text/&#39;&gt;, &lt;Element &#39;a&#39; href=&#39;/history/&#39;&gt;, &lt;Element &#39;a&#39; href=&#39;/pic/&#39;&gt;, &lt;Element &#39;a&#39; href=&#39;/textnew/&#39;&gt;]
 [&#39;有一次，几位大城市的朋友来家里玩，我招待他们吃风干羊肉做臊子的饸饹面，这是我们老家最具特色的美食！饭快熟的时候，老婆让我在园子里摘点“芫荽 ”，朋友问我，“芫荽”是什么东东？我给他们翻译解释说：我们本地土话叫“芫荽”，你们城里人讲普通话叫香菜，他们还大笑了一场。\n前天下雨没事儿干，翻看新华字典，突然发现“芫荽”才是香菜的学名，Tm香菜才是土话！而且我们地方方言就这两个字发音还特别标准！&#39;, &#39;昨天晚上跟老婆吵架，他抓起我的手机就摔了。我立马摔了他的，结果我的还能用，他的坏了。高潮是人家立刻出门买了个新的！我艹，是不是中计了？？&#39;, &#39;小姨要去高铁站，我看着大大小小的箱子说：坐公交车要转车，转来转去要一个多小时，太不方便了，不如我开车送你吧。\n小姨迟疑了一下，同意了。\n我准时把小姨送到了高铁站，正好赶上检票。\n小姨高兴地说：自己开车就是方便，不过幸好你妈聪明，让我们提前两个多小时就出发了！&#39;
 </code></pre></div>
@@ -138,45 +139,45 @@ print(list(map(lambda x: x.text, r.html.find(&#39;div.content span&#39;))))
 <li>_encoding，编码格式。</li>
 </ul>
 <p>还是上面的例子，不过这次使用XPATH语法：</p>
-<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">html</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="ss">&quot;//div[@id=&#39;menu&#39;]&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">first</span><span class="o">=</span><span class="k">True</span><span class="p">).</span><span class="nc">text</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">html</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="ss">&quot;//div[@id=&#39;menu&#39;]&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">first</span><span class="o">=</span><span class="k">True</span><span class="p">).</span><span class="nc">text</span><span class="p">)</span><span class="w"></span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">html</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="ss">&quot;//div[@id=&#39;menu&#39;]/a&quot;</span><span class="p">))</span><span class="w"></span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">html</span><span class="p">.</span><span class="n">xpath</span><span class="p">(</span><span class="ss">&quot;//div[@class=&#39;content&#39;]/span/text()&quot;</span><span class="p">))</span><span class="w"></span>
 </code></pre></div>
 
 <p>输出和上面那个几乎一样，之所以说是“几乎”，因为第三个输出会多出几个换行符，不知道什么原因。需要注意的一点是如果XPATH中包含<code>text()</code>或<code>@href</code>这样的子属性，那么结果相应的会变成简单的字符串类型，而不是HTML元素。</p>
-<div class="highlight"><pre><span></span><code>[&#39;\n\n\n我一份文件忘家里了，又懒得回家取，就给小姨子发短信息:   帮我把文件送来，晚上我谢谢你。等半天也没送来文件，我只好打个车回家自己拿，到家一进屋，我就发现气氛不对劲，老婆铁青着脸，两手掐着腰，小姨子站旁边对我怒目而视。&#39;]
+<div class="codehilite"><pre><span></span><code>[&#39;\n\n\n我一份文件忘家里了，又懒得回家取，就给小姨子发短信息:   帮我把文件送来，晚上我谢谢你。等半天也没送来文件，我只好打个车回家自己拿，到家一进屋，我就发现气氛不对劲，老婆铁青着脸，两手掐着腰，小姨子站旁边对我怒目而视。&#39;]
 </code></pre></div>
 
 <h3>元素内容</h3>
 <p>糗事百科首页LOGO的HTML代码如下所示：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span> <span class="na">id=</span><span class="s">&quot;hd_logo&quot;</span><span class="nt">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span> <span class="na">id=</span><span class="s">&quot;hd_logo&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;&lt;h1&gt;</span>糗事百科<span class="nt">&lt;/h1&gt;&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 
 <p>我们来选取这个元素：</p>
-<div class="highlight"><pre><span></span><code>e = r.html.find(&quot;div#hd_logo&quot;, first=True)
+<div class="codehilite"><pre><span></span><code>e = r.html.find(&quot;div#hd_logo&quot;, first=True)
 </code></pre></div>
 
 <p>要获取元素的文本内容，用text属性：</p>
-<div class="highlight"><pre><span></span><code>print(e.text) 
+<div class="codehilite"><pre><span></span><code>print(e.text) 
 </code></pre></div>
 
 <p>要获取元素的attribute，用attr属性：</p>
-<div class="highlight"><pre><span></span><code>print(e.attrs)
+<div class="codehilite"><pre><span></span><code>print(e.attrs)
 # {&#39;class&#39;: (&#39;logo&#39;,), &#39;id&#39;: &#39;hd_logo&#39;}
 </code></pre></div>
 
 <p>要获取元素的HTML代码，用html属性：</p>
-<div class="highlight"><pre><span></span><code>print(e.html) 
+<div class="codehilite"><pre><span></span><code>print(e.html) 
 </code></pre></div>
 
 <p>要搜索元素的文本内容，用search函数，比如说我们现在想知道是糗事什么科：</p>
-<div class="highlight"><pre><span></span><code>print(e.search(&quot;糗事{}科&quot;)[0]) 
+<div class="codehilite"><pre><span></span><code>print(e.search(&quot;糗事{}科&quot;)[0]) 
 </code></pre></div>
 
 <p>最后还有前面提到的两个链接属性：</p>
-<div class="highlight"><pre><span></span><code>print(e.absolute_links)
+<div class="codehilite"><pre><span></span><code>print(e.absolute_links)
 print(e.links) 
 </code></pre></div>
 
@@ -184,7 +185,7 @@ print(e.links)
 <p>这一部分我懒得找例子了，所以用官网上的例子。</p>
 <h3>JavaScript支持</h3>
 <p>有些网站是使用JavaScript渲染的，这样的网站爬取到的结果只有一堆JS代码，这样的网站requests-html也可以处理，关键一步就是在HTML结果上调用一下render函数，它会在用户目录（默认是<code>~/.pyppeteer/</code>）中下载一个chromium，然后用它来执行JS代码。下载过程只在第一次执行，以后就可以直接使用chromium来执行了。唯一缺点就是chromium下载实在太太太太太太慢了，没有科学上网的同学可能无法使用该功能了。</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; r = session.get(&#39;http://python-requests.org/&#39;)
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; r = session.get(&#39;http://python-requests.org/&#39;)
 
 &gt;&gt;&gt; r.html.render()
 [W:pyppeteer.chromium_downloader] start chromium download.
@@ -208,7 +209,7 @@ Download may take a few minutes.
 <p>比如说简书的用户页面上用户的文章列表就是一个异步加载的例子，初始只显示最近几篇文章，如果想爬取所有文章，就需要使用scrolldown配合sleep参数模拟下滑页面，促使JS代码加载所有文章。</p>
 <h3>智能分页</h3>
 <p>有些网站会分页显示内容，例如reddit。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nv">r</span> <span class="o">=</span> <span class="nv">session</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">https://reddit.com</span><span class="s1">&#39;</span><span class="ss">)</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nv">r</span> <span class="o">=</span> <span class="nv">session</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">https://reddit.com</span><span class="s1">&#39;</span><span class="ss">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="nv">html</span> <span class="nv">in</span> <span class="nv">r</span>.<span class="nv">html</span>:
 ...     <span class="nv">print</span><span class="ss">(</span><span class="nv">html</span><span class="ss">)</span>
 <span class="o">&lt;</span><span class="nv">HTML</span> <span class="nv">url</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">https://www.reddit.com/</span><span class="s1">&#39;</span><span class="o">&gt;</span>
@@ -222,14 +223,14 @@ Download may take a few minutes.
 </code></pre></div>
 
 <p>这样的话，请求下一个网页就很容易了。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nv">r</span> <span class="o">=</span> <span class="nv">session</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">https://reddit.com</span><span class="s1">&#39;</span><span class="ss">)</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nv">r</span> <span class="o">=</span> <span class="nv">session</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">https://reddit.com</span><span class="s1">&#39;</span><span class="ss">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nv">r</span>.<span class="nv">html</span>.<span class="k">next</span><span class="ss">()</span>
 <span class="s1">&#39;</span><span class="s">https://www.reddit.com/?count=25&amp;after=t3_81pm82</span><span class="s1">&#39;</span>
 </code></pre></div>
 
 <h3>直接使用HTML</h3>
 <p>前面介绍的都是通过网络请求HTML内容，其实requests-html当然可以直接使用，只需要直接构造HTML对象即可：</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTML</span>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;a href=&#39;https://httpbin.org&#39;&gt;&quot;&quot;&quot;</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">html</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="o">=</span><span class="n">doc</span><span class="p">)</span>
@@ -238,7 +239,7 @@ Download may take a few minutes.
 </code></pre></div>
 
 <p>直接渲染JS代码也可以：</p>
-<div class="highlight"><pre><span></span><code> &gt;&gt;&gt; script = &quot;&quot;&quot;
+<div class="codehilite"><pre><span></span><code> &gt;&gt;&gt; script = &quot;&quot;&quot;
         () =&gt; {
             return {
                 width: document.documentElement.clientWidth,
@@ -260,13 +261,13 @@ Download may take a few minutes.
 <p>前面都是简单的用GET方法获取请求，如果需要登录等比较复杂的过程，就不能用get方法了。<code>HTMLSession</code>类包含了丰富的方法，可以帮助我们完成需求。下面介绍一下这些方法。</p>
 <h4>自定义用户代理</h4>
 <p>有些网站会使用UA来识别客户端类型，有时候需要伪造UA来实现某些操作。如果查看文档的话会发现<code>HTMLSession</code>上的很多请求方法都有一个额外的参数<code>**kwargs</code>，这个参数用来向底层的请求传递额外参数。我们先向网站发送一个请求，看看返回的网站信息。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">html</span><span class="p">))</span>
 </code></pre></div>
 
 <p>返回的结果如下：</p>
-<div class="highlight"><pre><span></span><code>{&#39;args&#39;: {},
+<div class="codehilite"><pre><span></span><code>{&#39;args&#39;: {},
  &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;,
              &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;,
              &#39;Connection&#39;: &#39;close&#39;,
@@ -279,13 +280,13 @@ Download may take a few minutes.
 </code></pre></div>
 
 <p>可以看到UA是requests-html自带的UA，下面换一个UA：</p>
-<div class="highlight"><pre><span></span><code><span class="n">ua</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ua</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0&#39;</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;user-agent&#39;</span><span class="p">:</span> <span class="n">ua</span><span class="p">})</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">html</span><span class="p">))</span>
 </code></pre></div>
 
 <p>可以看到UA确实发生了变化：</p>
-<div class="highlight"><pre><span></span><code>{&#39;args&#39;: {},
+<div class="codehilite"><pre><span></span><code>{&#39;args&#39;: {},
  &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;,
              &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;,
              &#39;Connection&#39;: &#39;close&#39;,
@@ -299,12 +300,12 @@ Download may take a few minutes.
 <p>当然这里仅仅是换了一个UA，如果你有需要可以在header中修改其他参数。</p>
 <h4>模拟表单登录</h4>
 <p><code>HTMLSession</code>带了一整套的HTTP方法，包括get、post、delete等，对应HTTP中各个方法。比如下面我们就来模拟一下表单登录：</p>
-<div class="highlight"><pre><span></span><code> <span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/post&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;yitian&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="mi">123456</span><span class="p">})</span>
+<div class="codehilite"><pre><span></span><code> <span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/post&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;yitian&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">:</span> <span class="mi">123456</span><span class="p">})</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">html</span><span class="p">))</span>
 </code></pre></div>
 
 <p>结果如下，可以看到forms中确实收到了提交的表单值：</p>
-<div class="highlight"><pre><span></span><code>{&#39;args&#39;: {},
+<div class="codehilite"><pre><span></span><code>{&#39;args&#39;: {},
  &#39;data&#39;: &#39;&#39;,
  &#39;files&#39;: {},
  &#39;form&#39;: {&#39;passwd&#39;: &#39;123456&#39;, &#39;username&#39;: &#39;yitian&#39;},
@@ -327,7 +328,7 @@ Download may take a few minutes.
 <p>文章写完了感觉有点空洞，所以补充了几个小例子。不得不说requests-html用起来还是挺爽的，一些小爬虫例子用scrapy感觉有点大材小用，用requests和BeautifulSoup又感觉有点啰嗦，requests-html的出现正好弥补了这个空白。大家学习一下这个库，好处还是很多的。</p>
 <h3>爬取简书用户文章</h3>
 <p>简书用户页面的文章列表就是一个典型的异步加载例子，用requests-html的话可以轻松搞定，如下所示，仅仅5行代码。</p>
-<div class="highlight"><pre><span></span><code><span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.jianshu.com/u/7753478e1554&#39;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.jianshu.com/u/7753478e1554&#39;</span><span class="p">)</span>
 <span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">scrolldown</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sleep</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">titles</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a.title&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">titles</span><span class="p">):</span>
@@ -337,7 +338,7 @@ Download may take a few minutes.
 <p>当然这个例子还有所不足，就是通用性稍差，因为文章列表没有分页机制，需要一直往下拉页面，考虑到不同的用户文章数不同，需要先获取用户总文章数，然后在计算一下应该下滑页面多少次，这样才能取得较好的效果。这里仅仅简单获取一些我自己的文章，就不往复杂写了。</p>
 <h3>爬取天涯论坛</h3>
 <p>以前经常在天涯论坛上追一些帖子，现在正好写一个爬虫，把连载的好帖子一次性爬下来弄成一个文件。</p>
-<div class="highlight"><pre><span></span><code> <span class="nv">url</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">http://bbs.tianya.cn/post-culture-488321-1.shtml</span><span class="s1">&#39;</span>
+<div class="codehilite"><pre><span></span><code> <span class="nv">url</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">http://bbs.tianya.cn/post-culture-488321-1.shtml</span><span class="s1">&#39;</span>
 <span class="nv">r</span> <span class="o">=</span> <span class="nv">session</span>.<span class="nv">get</span><span class="ss">(</span><span class="nv">url</span><span class="ss">)</span>
 
 <span class="nv">author</span> <span class="o">=</span> <span class="nv">r</span>.<span class="nv">html</span>.<span class="nv">find</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">div.atl-info span a</span><span class="s1">&#39;</span>, <span class="nv">first</span><span class="o">=</span><span class="nv">True</span><span class="ss">)</span>.<span class="nv">text</span>

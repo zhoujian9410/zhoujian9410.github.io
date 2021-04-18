@@ -32,6 +32,7 @@
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/elegant.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/custom.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/styles.css" media="screen">
     </head>
     <body>
         <div class="go-top">
@@ -82,7 +83,7 @@
 <p><code>requests-html</code>是<code>request</code>库的作者开发的新库，一个所谓"for humans"的十分易用的Python库。</p>
 <h2>获取文本</h2>
 <p>找到文本的选择器：class选择器（用'.'标记）或者id选择器（用'#'标记）,并通过相关的<code>requests-html</code>库的<code>find</code>函数获得内容，具体代码如下：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
 <span class="n">novel</span><span class="o">=</span><span class="n">HTMLSession</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="c1"># url是小说文本所在网页链接</span>
 <span class="n">txt</span><span class="o">=</span><span class="n">novel</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div#txt&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
@@ -97,7 +98,7 @@
 <p>我所需要下载小说的链接有一个特征，每一章分成了n页，而下一页一般是相对链接，下一章采用的绝对链接。因而导致我一开始链接错误的问题，一直在第一章重复下载。
 解决方法很简单，下一页的链接为'?page=n'的形式，我只需要获取链接之后判断是否出现'page'这一字符串，即可判断是下一页还是下一页。并将链接分为两部分:url+pages，是下一页时刷新pages，是下一章时刷新url。</p>
 <h3>所有代码</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">requests_html</span> <span class="kn">import</span> <span class="n">HTMLSession</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">xlrd</span>
 
