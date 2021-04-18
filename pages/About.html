@@ -32,6 +32,28 @@
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/custom.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/styles.css" media="screen">
+
+<!--  原来的Google分析代码
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'G-VXXC25GFNH', 'auto');
+    ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXXC25GFNH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VXXC25GFNH');
+</script>
+
     </head>
     <body>
         <div class="go-top">
@@ -93,6 +115,7 @@
 <li>改为按用户文件夹分组，而非Markdown的Category元数据分组</li>
 <li>修改Base.html在站名左侧添加了头像</li>
 <li>修改代码高亮，风格为"colorful",参看<a href="https://georgexyz.com/code-highlight-in-pelican.html">这篇博文</a></li>
+<li>添加Google分析</li>
 </ol>
             
         </div>
