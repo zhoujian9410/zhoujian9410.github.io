@@ -11,13 +11,12 @@
         <meta name="twitter:card" content="summary">
         <meta http-equiv="refresh" content="5;url=https://zhoujian9410.gitee.io/">
 
-<meta property="og:title" content="Floyd Zhou&#39;s Blog"/>
-<meta name="twitter:title" content="Floyd Zhou&#39;s Blog">
-<meta property="og:url" content="https://zhoujian9410.github.io" />
-<meta property="og:site_name" content="Floyd Zhou&#39;s Blog" />
-<meta property="og:article:author" content="Floyd Zhou" />
-        <title>Floyd Zhou&#39;s Blog
-</title>
+        <meta property="og:title" content="Floyd Zhou&#39;s Blog"/>
+        <meta name="twitter:title" content="Floyd Zhou&#39;s Blog">
+        <meta property="og:url" content="https://zhoujian9410.github.io" />
+        <meta property="og:site_name" content="Floyd Zhou&#39;s Blog" />
+        <meta property="og:article:author" content="Floyd Zhou" />
+        <title>Floyd Zhou&#39;s Blog</title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 
@@ -28,33 +27,26 @@
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/gotop.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://zhoujian9410.github.io/theme/css/styles.css" media="screen">
 
-<!--  原来的Google分析代码
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'G-VXXC25GFNH', 'auto');
-    ga('send', 'pageview');
-</script>
--->
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXXC25GFNH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VXXC25GFNH');
-</script>
-
     </head>
     <body>
-        <div class="go-top">
-            <div class="arrow"></div>
-            <div class="stick"></div>
-        </div>
+        <script language="javascript" type='text/javascript'> 
+            var secs =5; //倒计时的秒数    
+            var URL ;    
+            function Load(url){    
+                URL =url;    
+                for(var i=secs;i>=0;i--)    
+                {    
+                window.setTimeout('doUpdate(' + i + ')', (secs-i) * 1000);    
+                }    
+            }    
+            function doUpdate(num)    
+            {    
+                document.getElementById('ShowDiv').innerHTML = '将在'+num+'秒后自动跳转到京东商城首页' ;    
+                if(num == 0) { window.location=URL; }    
+            }       
+            Load("https://zhoujian9410.gitee.io"); //要跳转到的页面    
+        </script>    
+
         <div id="content-sans-footer">
         <div class="navbar navbar-static-top">
             <div class="navbar-inner">
@@ -66,9 +58,6 @@
                     </a>
                     <a class="brand" href="https://zhoujian9410.github.io/"><span class=site-name><img src="https://zhoujian9410.github.io/theme/img/head.jpg" width="30" height="30"/>&nbsp;Floyd Zhou's Blog</span></a>
                     <div class="nav-collapse collapse">
-
-                        <!--下面一行是添加的Google站内搜索代码-->
-                        <script async src="https://cse.google.com/cse.js?cx=c559c742fdf02d482"></script>
                         <ul class="nav pull-right top-menu">
                             <li  class="active"><a href="https://zhoujian9410.github.io">Home</a></li>
                             <li ><a href="https://zhoujian9410.github.io/pages/About.html">About</a></li>
@@ -94,7 +83,7 @@
 
     <div class="row-fluid">
         <div class="span8 offset2">
-            <h2><br /><br /><br /><br /><br />本网址已废弃，5秒后跳转到下面网址(点击直接跳转)：<br /><a href="https://zhoujian9410.gitee.io">https://zhoujian9410.gitee.io/</a> </h2>
+            <p><br /><br /><br /><br /><br />本网址已废弃，5秒后跳转到下面网址(点击链接直接跳转)：<br /><a href="https://zhoujian9410.gitee.io">Floyd Zhou's Blog</a> </p>
         </div>
     </div>
 </div>
