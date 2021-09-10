@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+        <title>Floyd Zhou&#39;s Blog</title>
+    </head>
+    <body style="overflow:hidden">
+        <iframe src="https://zhoujian9410.gitee.io/" id='myframe' name="myframe" allowTransparency="true" scrolling="auto" width="100%" height="100" frameborder="0" marginheight="0px" marginwidth="0px">
+        </iframe>
+        <script>
+            window.addEventListener("message",
+                function(a) {
+                    //console.log(a.data)
+                    //console.log(window.location.pathname)
+                    var p = document.getElementById('myframe');
+                    /***之前的方法，获取iframe页面的高度，然后设置，但是由于Gittalk异步加载，导致设置的高度不够
+                    var h_size=Number(a.data)+50;//额外加50
+                    p.height=newsize.toString()+"px";
+                    ***/
+                   /**新的方法，直接禁用主页面的滚动
+                    * 然后将子页面高度设为网页高度(window.screen.availHeight才行)（需要减掉一点值）
+                    **/
+                    //var s_height=Number(window.screen.height)-110;
+                    var s_height=Number(window.screen.availHeight)-110;
+                    //console.log(s_height);
+                    //console.log(h_size);
+                    p.height=s_height.toString()+"px";
+                },
+                !1);
+        </script>
+    </body>
+</html>
