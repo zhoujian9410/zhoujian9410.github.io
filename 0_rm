@@ -1,7 +1,0 @@
-git rm *.html
-git rm favicon.ico
-git rm -r author
-git rm -r category
-git rm -r pages
-git rm -r tag
-git rm -r theme 
