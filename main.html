@@ -4,10 +4,22 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
         <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
         <title>Floyd Zhou&#39;s Blog</title>
+        <style type="text/css">
+            .holder{
+                width:102%;
+                height:100%;
+                margin:-0.5% 0% 0% -1%;
+                overflow:hidden;
+                position:relative;
+            }
+        </style>
     </head>
+
     <body style="overflow:hidden">
-        <iframe src="https://zhoujian9410.gitee.io" id='myframe' name="myframe" allowTransparency="true" scrolling="auto" width="100%" height="20" frameborder="0" marginheight="0px" marginwidth="0px">
-        </iframe>
+        <div class="holder">
+            <iframe src="https://zhoujian9410.gitee.io" id='myframe' name="myframe" allowTransparency="true" scrolling="auto" frameborder="no" width="100%" height="20" marginheight="0px" marginwidth="0px">
+            </iframe>
+        </div>
         <script>
             window.addEventListener("message",
                 function(a) {
@@ -15,7 +27,7 @@
                     new_title=a.data.frame_title;
                     document.title = new_title;
                     var p = document.getElementById('myframe');
-                    var s_height=Number(window.screen.availHeight)-110;
+                    var s_height=Number(window.screen.availHeight)-100;
                     p.height=s_height.toString()+"px";
                 },
                 !1);
