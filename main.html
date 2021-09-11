@@ -6,8 +6,22 @@
         <title>Floyd Zhou&#39;s Blog</title>
     </head>
     <body style="overflow:hidden">
-        <iframe src="https://zhoujian9410.gitee.io/" id='myframe' name="myframe" allowTransparency="true" scrolling="auto" width="100%" height="100" frameborder="0" marginheight="0px" marginwidth="0px">
+        <iframe src="https://zhoujian9410.gitee.io" id='myframe' name="myframe" allowTransparency="true" scrolling="auto" width="100%" height="20" frameborder="0" marginheight="0px" marginwidth="0px">
         </iframe>
+        <script>
+            window.addEventListener("message",
+                function(a) {
+                    //console.log(a.data);
+                    new_title=a.data.frame_title;
+                    document.title = new_title;
+                    var p = document.getElementById('myframe');
+                    var s_height=Number(window.screen.availHeight)-110;
+                    p.height=s_height.toString()+"px";
+                },
+                !1);
+        </script>
+
+        <!--旧版
         <script>
             window.addEventListener("message",
                 function(a) {
@@ -29,5 +43,6 @@
                 },
                 !1);
         </script>
+        -->
     </body>
 </html>
